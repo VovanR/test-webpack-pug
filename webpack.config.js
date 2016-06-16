@@ -1,6 +1,7 @@
 module.exports = {
     entry: {
-        index: './src/index.pug'
+        index: './src/index.pug',
+        styles: './src/styles/styles.css'
     },
 	output: {
 		path: './dist',
@@ -11,6 +12,10 @@ module.exports = {
             {
                 test: /\.pug$/,
                 loader: 'file?name=[name].html!jade-html'
+            },
+            {
+                test: /\.css/,
+                loader: 'file?name=[name].css'
             }
         ]
     }
