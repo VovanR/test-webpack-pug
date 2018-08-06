@@ -1,16 +1,26 @@
+const path = require('path');
+
 module.exports = {
     entry: {
         index: './src/index.pug'
     },
 	output: {
-		path: './dist',
+		path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
 	},
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.pug$/,
-                loader: 'file?name=[name].html!jade-html-loader'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].html'
+                        }
+                    },
+                    'pug-html-loader'
+                ]
             }
         ]
     }
